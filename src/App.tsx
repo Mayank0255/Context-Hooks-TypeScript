@@ -1,7 +1,7 @@
 import * as React from "react";
-import { AppProvider } from "./context";
-import Products from "./Products";
-import List from "./List";
+import { AppProvider } from "./contexts/context";
+import Products from "./components/Products";
+import List from "./components/List";
 import "./styles.css";
 
 export default function App() {

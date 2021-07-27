@@ -1,16 +1,6 @@
 import React, { createContext, useReducer, Dispatch } from "react";
-import {
-  productReducer,
-  shoppingCartReducer,
-  ProductActions,
-  ShoppingCartActions
-} from "./reducers";
-
-type ProductType = {
-  id: number;
-  name: string;
-  price: number;
-};
+import { ProductType, productReducer, ProductActions } from "../reducers/productReducer"
+import { shoppingCartReducer, ShoppingCartActions } from "../reducers/shoppingCartReducer"
 
 type InitialStateType = {
   products: ProductType[];

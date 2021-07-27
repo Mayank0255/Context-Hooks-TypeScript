@@ -1,6 +1,6 @@
 import React from "react";
-import { AppContext } from "./context";
-import { Types } from "./reducers";
+import { AppContext } from "../contexts/context";
+import { ProductTypes } from "../reducers/productReducer";
 
 const List = () => {
   const [form, setForm] = React.useState({
@@ -18,7 +18,7 @@ const List = () => {
 
   const createProduct = () => {
     dispatch({
-      type: Types.Create,
+      type: ProductTypes.Create,
       payload: {
         id: Math.round(Math.random() * 10000),
         name: form.name,
@@ -29,7 +29,7 @@ const List = () => {
 
   const deleteProduct = (id: number) => {
     dispatch({
-      type: Types.Delete,
+      type: ProductTypes.Delete,
       payload: {
         id,
       }

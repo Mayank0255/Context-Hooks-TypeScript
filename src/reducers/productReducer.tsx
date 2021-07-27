@@ -1,3 +1,5 @@
+import { ShoppingCartActions } from './shoppingCartReducer';
+
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
     ? {
@@ -9,27 +11,24 @@ type ActionMap<M extends { [index: string]: any }> = {
       }
 };
 
-export enum Types {
+export enum ProductTypes {
   Create = "CREATE_PRODUCT",
-  Delete = "DELETE_PRODUCT",
-  Add = "ADD_PRODUCT"
+  Delete = "DELETE_PRODUCT"
 }
 
-// Product
-
-type ProductType = {
+export type ProductType = {
   id: number;
   name: string;
   price: number;
 };
 
 type ProductPayload = {
-  [Types.Create]: {
+  [ProductTypes.Create]: {
     id: number;
     name: string;
     price: number;
   };
-  [Types.Delete]: {
+  [ProductTypes.Delete]: {
     id: number;
   };
 };
@@ -43,7 +42,7 @@ export const productReducer = (
   action: ProductActions | ShoppingCartActions
 ) => {
   switch (action.type) {
-    case Types.Create:
+    case ProductTypes.Create:
       return [
         ...state,
         {
@@ -52,30 +51,8 @@ export const productReducer = (
           price: action.payload.price
         }
       ];
-    case Types.Delete:
+    case ProductTypes.Delete:
       return [...state.filter(product => product.id !== action.payload.id)];
-    default:
-      return state;
-  }
-};
-
-// ShoppingCart
-
-type ShoppingCartPayload = {
-  [Types.Add]: undefined;
-};
-
-export type ShoppingCartActions = ActionMap<
-  ShoppingCartPayload
->[keyof ActionMap<ShoppingCartPayload>];
-
-export const shoppingCartReducer = (
-  state: number,
-  action: ProductActions | ShoppingCartActions
-) => {
-  switch (action.type) {
-    case Types.Add:
-      return state + 1;
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { AppContext } from "./context";
-import { Types } from "./reducers";
+import { AppContext } from "../contexts/context";
+import { ShoppingCartTypes } from "../reducers/shoppingCartReducer";
 
 const Products = () => {
   const { state, dispatch } = React.useContext(AppContext);
@@ -10,7 +10,7 @@ const Products = () => {
       <button
         onClick={() => {
           dispatch({
-            type: Types.Add
+            type: ShoppingCartTypes.Add
           });
         }}
       >
