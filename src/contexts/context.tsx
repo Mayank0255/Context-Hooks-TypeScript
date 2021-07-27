@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, Dispatch } from "react";
+import React, { createContext, useReducer, Dispatch, FunctionComponent } from "react";
 import { ProductType, productReducer, ProductActions } from "../reducers/productReducer"
 import { shoppingCartReducer, ShoppingCartActions } from "../reducers/shoppingCartReducer"
 
@@ -28,7 +28,7 @@ const mainReducer = (
   shoppingCart: shoppingCartReducer(shoppingCart, action)
 });
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider: FunctionComponent = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
 
   return (

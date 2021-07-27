@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { AppContext } from "../contexts/context";
 import { ProductTypes } from "../reducers/productReducer";
 
 const List = () => {
-  const [form, setForm] = React.useState({
+  const [form, setForm] = useState({
     name: "",
     price: 0
   });
-  const { state ,dispatch } = React.useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   const handleForm = (type: string, value: string) => {
     setForm(form => ({

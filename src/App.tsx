@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { AppProvider } from "./contexts/context";
 import Products from "./components/Products";
 import List from "./components/List";
